@@ -1,0 +1,122 @@
+package co.gov.dane.uo.endpoint;
+import java.util.List;
+
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import co.gov.dane.framework.msg.dto.ContextoRespuestaDTO;
+import co.gov.dane.framework.msg.dto.MsgFalloDTO;
+import co.gov.dane.framework.msg.util.UtilContexto;
+import co.gov.dane.framework.util.Constantes;
+import co.gov.dane.framework.util.Errores;
+import co.gov.dane.framework.util.Utilidades;
+import co.gov.dane.md.usuarios.UsuarioDTO;
+import co.gov.dane.uo.delegado.DelegadoNegocios;
+import co.gov.dane.uo.delegado.IDelegadoNegocios;
+import co.gov.dane.uo.dto.MsgGetTodosUsuariosRespDTO;
+import co.gov.dane.uo.dto.MsgGetUsuarioPorIdRespDTO;
+
+// Se define la URI /srvs/{modulo}-{sistema}-{subsistema}
+@Path("/adminuser")
+public class UsuarioEndpoint {
+	
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/usuarios")
+	public Response getTodos(){
+		
+		MsgGetTodosUsuariosRespDTO msgResp = new MsgGetTodosUsuariosRespDTO();		
+		
+		try {
+			
+			ContextoRespuestaDTO contextResponse = UtilContexto.getFillContextResponseDTOBasic("", Constantes.ESTADO_EXITOSO);
+			msgResp.setContextoRespuestaDTO(contextResponse);
+			
+			IDelegadoNegocios delegado = new DelegadoNegocios();		
+			List<UsuarioDTO> lstUsuarioDTO = delegado.getTodosUsuarios();
+			msgResp.setUsuariosDTO(lstUsuarioDTO);
+											
+			String json = Utilidades.convertirAJSON(msgResp);
+			
+			return Response.status(Constantes.ESTADO_HTTP_OK).entity(json).build();
+			
+		} catch (Exception e) {
+			MsgFalloDTO msgFallo = UtilContexto.getFillContextFalloDTO("", e, Errores.ERROR_SERVER);
+										
+			String json = Utilidades.convertirAJSON(msgFallo);		
+			
+			return Response.status(Constantes.ESTADO_HTTP_INTERNAL_SERVER_ERROR).entity(json).build();
+		}
+				
+	}
+	
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/usuarios/{id}")
+	public Response getPorId(@PathParam("id") int id){
+		
+		MsgGetUsuarioPorIdRespDTO msgResp = new MsgGetUsuarioPorIdRespDTO();		
+		
+		try {
+			
+			ContextoRespuestaDTO contextResponse = UtilContexto.getFillContextResponseDTOBasic("", Constantes.ESTADO_EXITOSO);
+			msgResp.setContextoRespuestaDTO(contextResponse);
+			
+			IDelegadoNegocios delegado = new DelegadoNegocios();		
+			UsuarioDTO usuarioDTO = delegado.getUsuarioPorId(id);
+			msgResp.setUsuarioDTO(usuarioDTO);
+											
+			String json = Utilidades.convertirAJSON(msgResp);
+			
+			return Response.status(Constantes.ESTADO_HTTP_OK).entity(json).build();
+			
+		} catch (Exception e) {
+			MsgFalloDTO msgFallo = UtilContexto.getFillContextFalloDTO("", e, Errores.ERROR_SERVER);
+			
+			String json = Utilidades.convertirAJSON(msgFallo);		
+			
+			return Response.status(Constantes.ESTADO_HTTP_INTERNAL_SERVER_ERROR).entity(json).build();
+		}
+				
+	}
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/usuarios/{id}")
+	public Response eliminar(@PathParam("id") int id){
+		
+		MsgGetUsuarioPorIdRespDTO msgResp = new MsgGetUsuarioPorIdRespDTO();		
+		
+		try {
+			
+			ContextoRespuestaDTO contextResponse = UtilContexto.getFillContextResponseDTOBasic("", Constantes.ESTADO_EXITOSO);
+			msgResp.setContextoRespuestaDTO(contextResponse);
+			
+			IDelegadoNegocios delegado = new DelegadoNegocios();		
+			UsuarioDTO usuarioDTO = delegado.getUsuarioPorId(id);
+			msgResp.setUsuarioDTO(usuarioDTO);
+											
+			String json = Utilidades.convertirAJSON(msgResp);
+			
+			return Response.status(Constantes.ESTADO_HTTP_OK).build();
+			
+		} catch (Exception e) {
+			MsgFalloDTO msgFallo = UtilContexto.getFillContextFalloDTO("", e, Errores.ERROR_SERVER);
+			
+			String json = Utilidades.convertirAJSON(msgFallo);		
+			
+			return Response.status(Constantes.ESTADO_HTTP_INTERNAL_SERVER_ERROR).entity(json).build();
+		}
+				
+	}
+	
+	
+
+}

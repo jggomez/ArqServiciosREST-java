@@ -1,0 +1,5 @@
+package co.gov.dane.md.usuarios;
+
+public class UsuarioDTO {
+
+}

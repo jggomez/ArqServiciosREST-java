@@ -1,0 +1,10 @@
+package co.gov.dane.uo.delegado;
+
+import java.util.List;
+import co.gov.dane.md.usuarios.UsuarioDTO;
+
+public interface IDelegadoNegocios {
+	
+	public List<UsuarioDTO> getTodosUsuarios() throws Exception;	
+
+}

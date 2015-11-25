@@ -1,0 +1,10 @@
+package co.gov.dane.framework.cache;
+
+public class Cache {
+	
+	private static Cache instancia = null;
+	private Cache(){}
+	
+	
+
+}

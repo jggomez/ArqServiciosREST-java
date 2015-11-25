@@ -1,0 +1,41 @@
+package co.gov.dane.framework.cache;
+
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
+public class CacheMg {
+	
+	private static CacheMg instancia = null;
+	private static CacheManager cm;
+	private static Cache cache = null;
+	
+	private CacheMg(){}
+	
+	public static CacheMg getInstancia(){
+		
+		if(instancia == null){
+			instancia = new CacheMg();
+			cm = CacheManager.newInstance();
+			cache = cm.getCache("cacheconf");
+		}
+		
+		return instancia;
+		
+	}
+	
+	
+	public void insertar(String llave, Object valor){
+		cache.put(new Element(llave, valor));
+	}
+	
+	public Object obtener(String llave){
+		Element elem = cache.get(llave);
+		return elem.getObjectValue();
+	}
+	
+	
+	
+	
+
+}

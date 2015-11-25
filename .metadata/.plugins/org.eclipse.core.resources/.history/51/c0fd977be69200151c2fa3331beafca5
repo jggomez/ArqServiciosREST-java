@@ -1,0 +1,32 @@
+package co.gov.dane.uo.cache;
+
+import javax.inject.Inject;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.InvocationContext;
+import org.apache.commons.jcs.access.CacheAccess;
+
+public class CacheInterceptor {
+	
+	@Inject
+	private CacheAccess<String, Object> cache;
+	
+	@AroundInvoke
+	public Object cache(final InvocationContext ctx) throws Exception {
+
+        final Object[] parameters = ctx.getParameters();
+
+        final String key = parameters[0].toString();
+
+        Object o = cache.get(key);
+
+        if (null == o) {
+            o = ctx.proceed();
+            cache.put(key, o);
+        }
+
+        return o;
+	}
+	
+	
+
+}

@@ -1,0 +1,21 @@
+package co.gov.dane.uo.dto;
+
+import co.gov.dane.framework.msg.dto.ContextoRespuestaDTO;
+import co.gov.dane.framework.msg.dto.FalloDTO;
+
+public class MsgGetTodosUsuariosFalloDTO {
+	
+	private ContextoRespuestaDTO contextoRespuestaDTO;
+	private FalloDTO falloDTO;	
+
+	public FalloDTO getFalloDTO() {
+		return falloDTO;
+	}
+
+	public void setFalloDTO(FalloDTO falloDTO) {
+		this.falloDTO = falloDTO;
+	}
+	
+	
+
+}

@@ -1,0 +1,54 @@
+package co.gov.dane.framework.msg.util;
+
+import java.util.Date;
+
+import co.gov.dane.framework.msg.dto.ContextoRespuestaDTO;
+import co.gov.dane.framework.msg.dto.ContextoSolicitudDTO;
+import co.gov.dane.framework.msg.dto.FalloDTO;
+import co.gov.dane.framework.util.Constantes;
+
+public class UtilContexto {
+	
+	public static ContextoRespuestaDTO getFillContextResponseDTOBasic(
+			ContextoSolicitudDTO request) {
+
+		ContextoRespuestaDTO contextResponse = new ContextoRespuestaDTO();
+		contextResponse.setIdTransaccion(request.getIdTransaccion());
+		contextResponse.setFechatx(new Date());
+		contextResponse.setCodEstado(Constantes.ESTADO_EXITOSO);
+
+		return contextResponse;
+
+	}
+	
+	public static ContextoRespuestaDTO getFillContextResponseDTOBasic(
+			String idTransaction) {
+
+		ContextoRespuestaDTO contextResponse = new ContextoRespuestaDTO();
+		contextResponse.setIdTransaccion(idTransaction);
+		contextResponse.setFechatx(new Date());
+		contextResponse.setCodEstado(Constantes.ESTADO_EXITOSO);
+
+		return contextResponse;
+
+	}
+	
+	public static FalloDTO getFillContextFalloDTO(
+			String idTransaction, Exception e, String codError) {
+		
+		ContextoRespuestaDTO contextResponse = new ContextoRespuestaDTO();
+		contextResponse.setIdTransaccion(idTransaction);
+		contextResponse.setFechatx(new Date());
+		contextResponse.setCodEstado(Constantes.ESTADO_FALLIDO);
+
+		FalloDTO falloDTO = new FalloDTO();
+		falloDTO.setContextoRespuestaDTO(contextResponse);
+		falloDTO.setCodigo(codError);
+		falloDTO.setMensaje(e.getMessage());
+		falloDTO.setDescripcion(e.getMessage());
+
+		return falloDTO;
+
+	}
+
+}
