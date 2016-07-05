@@ -107,10 +107,14 @@ public class LUsuario {
 			usuario.setDireccion(direccion);
 			usuario.setFechaNacimiento(fechaNac);
 			
+			int tam = lstUsuarios.size();
+			
+			usuario.setId(tam + 1);			
+			
 			lstUsuarios.add(usuario);
 			
 			// retorna el id 
-			return 3;
+			return usuario.getId();
 			
 		} catch (Exception e) {
 			throw e;

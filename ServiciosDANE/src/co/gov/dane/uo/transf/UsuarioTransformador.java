@@ -17,6 +17,7 @@ public class UsuarioTransformador extends AdaptadorBase<UsuarioDTO, Usuario> {
 			objUsuarioDTO.setApellido(model.getApellidos());
 			objUsuarioDTO.setCelular(model.getCelular());
 			objUsuarioDTO.setDireccion(model.getDireccion());
+			objUsuarioDTO.setId(model.getId());
 			
 		}
 

@@ -1,0 +1,9 @@
+package co.gov.dane.uo.endpoint;
+
+public class Application {
+	
+	public static void main(String[] args){
+		
+	}
+
+}

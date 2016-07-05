@@ -1,5 +1,0 @@
-package co.gov.dane.uo.dto;
-
-public class MsgGetUsuarioPorIdRespDTO {
-
-}

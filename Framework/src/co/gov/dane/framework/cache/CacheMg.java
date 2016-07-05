@@ -17,8 +17,9 @@ public class CacheMg {
 
 		if (instancia == null) {
 			instancia = new CacheMg();
-			cm = CacheManager.newInstance();
-			cache = cm.getCache("cacheconf");
+			cm = CacheManager.getInstance();
+			cm.addCache("cache1");
+			cache = cm.getCache("cache1");
 		}
 
 		return instancia;

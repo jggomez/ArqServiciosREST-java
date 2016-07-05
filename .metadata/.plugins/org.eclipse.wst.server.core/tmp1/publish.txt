@@ -1,5 +1,5 @@
 #Tomcat publish data
-#Wed Nov 25 00:00:20 COT 2015
+#Mon Jul 04 20:20:08 COT 2016
 org.eclipse.jst.j2ee.server\:Framework=C\:\\apache-tomee-jaxrs-1.7.2\\wtpwebapps\\ServiciosDANE\\WEB-INF\\lib\\Framework-1.0.jar
 org.eclipse.jst.jee.server\:ServiciosDANE=C\:\\apache-tomee-jaxrs-1.7.2\\wtpwebapps\\ServiciosDANE
 org.eclipse.jst.j2ee.server\:UsuariosMD=C\:\\apache-tomee-jaxrs-1.7.2\\wtpwebapps\\ServiciosDANE\\WEB-INF\\lib\\UsuariosMD-1.0.jar

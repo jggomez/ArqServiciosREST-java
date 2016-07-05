@@ -8,7 +8,7 @@ import co.gov.dane.uo.modelo.Usuario;
 import co.gov.dane.uo.transf.UsuarioTransformador;
 
 public class DelegadoNegocios implements IDelegadoNegocios {
-
+		
 	private CacheMg obtenerCache() {
 		return CacheMg.getInstancia();
 	}

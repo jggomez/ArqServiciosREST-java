@@ -7,6 +7,15 @@ public class UsuarioDTO implements java.io.Serializable {
 	private String apellido;
 	private String direccion;
 	private String celular;
+	private int id;
+		
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
